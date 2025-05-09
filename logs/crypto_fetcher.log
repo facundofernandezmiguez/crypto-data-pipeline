@@ -1,0 +1,86 @@
+2025-05-09 13:18:56,203 - root - INFO - Logging configured successfully
+2025-05-09 13:18:56,204 - __main__ - INFO - Fetching data for bitcoin on 2023-05-01
+2025-05-09 13:18:57,622 - api - ERROR - HTTP error occurred: 400 Client Error: Bad Request for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:18:57,623 - api - INFO - Retrying in 2 seconds (attempt 1/3)
+2025-05-09 13:19:00,239 - api - ERROR - HTTP error occurred: 400 Client Error: Bad Request for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:19:00,239 - api - INFO - Retrying in 2 seconds (attempt 2/3)
+2025-05-09 13:19:02,828 - api - ERROR - HTTP error occurred: 400 Client Error: Bad Request for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:19:02,829 - __main__ - ERROR - Error fetching data: 400 Client Error: Bad Request for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:19:39,242 - root - INFO - Logging configured successfully
+2025-05-09 13:19:39,243 - __main__ - INFO - Fetching data for bitcoin on 2023-05-01
+2025-05-09 13:19:40,592 - api - ERROR - HTTP error occurred: 400 Client Error: Bad Request for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:19:40,593 - api - ERROR - API error details: {'timestamp': '2025-05-09T16:19:40.425+00:00', 'error_code': 10010, 'status': {'error_message': 'If you are using Pro API key, please change your root URL from api.coingecko.com to pro-api.coingecko.com  Please refer here for more details: https://docs.coingecko.com/reference/authentication'}}
+2025-05-09 13:19:40,594 - api - INFO - Retrying in 2 seconds (attempt 1/3)
+2025-05-09 13:19:43,231 - api - ERROR - HTTP error occurred: 400 Client Error: Bad Request for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:19:43,232 - api - ERROR - API error details: {'timestamp': '2025-05-09T16:19:43.060+00:00', 'error_code': 10010, 'status': {'error_message': 'If you are using Pro API key, please change your root URL from api.coingecko.com to pro-api.coingecko.com  Please refer here for more details: https://docs.coingecko.com/reference/authentication'}}
+2025-05-09 13:19:43,233 - api - INFO - Retrying in 2 seconds (attempt 2/3)
+2025-05-09 13:19:45,570 - api - ERROR - HTTP error occurred: 400 Client Error: Bad Request for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:19:45,571 - api - ERROR - API error details: {'timestamp': '2025-05-09T16:19:45.406+00:00', 'error_code': 10010, 'status': {'error_message': 'If you are using Pro API key, please change your root URL from api.coingecko.com to pro-api.coingecko.com  Please refer here for more details: https://docs.coingecko.com/reference/authentication'}}
+2025-05-09 13:19:45,572 - __main__ - ERROR - Error fetching data: 400 Client Error: Bad Request for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:55:00,012 - root - INFO - Logging configured successfully
+2025-05-09 13:55:00,012 - __main__ - INFO - Fetching data for bitcoin on 2023-05-01
+2025-05-09 13:55:01,381 - api - ERROR - HTTP error occurred: 400 Client Error: Bad Request for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:55:01,383 - api - ERROR - API error details: {'timestamp': '2025-05-09T16:55:01.216+00:00', 'error_code': 10010, 'status': {'error_message': 'If you are using Pro API key, please change your root URL from api.coingecko.com to pro-api.coingecko.com  Please refer here for more details: https://docs.coingecko.com/reference/authentication'}}
+2025-05-09 13:55:01,385 - api - INFO - Retrying in 2 seconds (attempt 1/3)
+2025-05-09 13:55:03,998 - api - ERROR - HTTP error occurred: 400 Client Error: Bad Request for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:55:03,998 - api - ERROR - API error details: {'timestamp': '2025-05-09T16:55:03.838+00:00', 'error_code': 10010, 'status': {'error_message': 'If you are using Pro API key, please change your root URL from api.coingecko.com to pro-api.coingecko.com  Please refer here for more details: https://docs.coingecko.com/reference/authentication'}}
+2025-05-09 13:55:03,999 - api - INFO - Retrying in 2 seconds (attempt 2/3)
+2025-05-09 13:55:06,611 - api - ERROR - HTTP error occurred: 400 Client Error: Bad Request for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:55:06,612 - api - ERROR - API error details: {'timestamp': '2025-05-09T16:55:06.451+00:00', 'error_code': 10010, 'status': {'error_message': 'If you are using Pro API key, please change your root URL from api.coingecko.com to pro-api.coingecko.com  Please refer here for more details: https://docs.coingecko.com/reference/authentication'}}
+2025-05-09 13:55:06,614 - __main__ - ERROR - Error fetching data: 400 Client Error: Bad Request for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:56:05,884 - root - INFO - Logging configured successfully
+2025-05-09 13:56:05,885 - __main__ - INFO - Fetching data for bitcoin on 2023-05-01
+2025-05-09 13:56:06,649 - api - ERROR - HTTP error occurred: 400 Client Error: Bad Request for url: https://pro-api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:56:06,653 - api - ERROR - API error details: {'timestamp': '2025-05-09T16:56:06.576+00:00', 'error_code': 10011, 'status': {'error_message': 'If you are using Demo API key, please change your root URL  from pro-api.coingecko.com to api.coingecko.com  Please refer here for more details: https://docs.coingecko.com/v3.0.1/reference/introduction'}}
+2025-05-09 13:56:06,655 - api - INFO - Retrying in 2 seconds (attempt 1/3)
+2025-05-09 13:56:08,909 - api - ERROR - HTTP error occurred: 400 Client Error: Bad Request for url: https://pro-api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:56:08,910 - api - ERROR - API error details: {'timestamp': '2025-05-09T16:56:08.845+00:00', 'error_code': 10011, 'status': {'error_message': 'If you are using Demo API key, please change your root URL  from pro-api.coingecko.com to api.coingecko.com  Please refer here for more details: https://docs.coingecko.com/v3.0.1/reference/introduction'}}
+2025-05-09 13:56:08,911 - api - INFO - Retrying in 2 seconds (attempt 2/3)
+2025-05-09 13:56:11,173 - api - ERROR - HTTP error occurred: 400 Client Error: Bad Request for url: https://pro-api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:56:11,173 - api - ERROR - API error details: {'timestamp': '2025-05-09T16:56:11.094+00:00', 'error_code': 10011, 'status': {'error_message': 'If you are using Demo API key, please change your root URL  from pro-api.coingecko.com to api.coingecko.com  Please refer here for more details: https://docs.coingecko.com/v3.0.1/reference/introduction'}}
+2025-05-09 13:56:11,174 - __main__ - ERROR - Error fetching data: 400 Client Error: Bad Request for url: https://pro-api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:56:23,322 - root - INFO - Logging configured successfully
+2025-05-09 13:56:23,322 - __main__ - INFO - Fetching data for bitcoin on 2023-05-01
+2025-05-09 13:56:24,222 - api - ERROR - HTTP error occurred: 400 Client Error: Bad Request for url: https://pro-api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:56:24,223 - api - ERROR - API error details: {'timestamp': '2025-05-09T16:56:24.175+00:00', 'error_code': 10011, 'status': {'error_message': 'If you are using Demo API key, please change your root URL  from pro-api.coingecko.com to api.coingecko.com  Please refer here for more details: https://docs.coingecko.com/v3.0.1/reference/introduction'}}
+2025-05-09 13:56:24,223 - api - INFO - Retrying in 2 seconds (attempt 1/3)
+2025-05-09 13:56:26,444 - api - ERROR - HTTP error occurred: 400 Client Error: Bad Request for url: https://pro-api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:56:26,445 - api - ERROR - API error details: {'timestamp': '2025-05-09T16:56:26.394+00:00', 'error_code': 10011, 'status': {'error_message': 'If you are using Demo API key, please change your root URL  from pro-api.coingecko.com to api.coingecko.com  Please refer here for more details: https://docs.coingecko.com/v3.0.1/reference/introduction'}}
+2025-05-09 13:56:26,446 - api - INFO - Retrying in 2 seconds (attempt 2/3)
+2025-05-09 13:56:28,659 - api - ERROR - HTTP error occurred: 400 Client Error: Bad Request for url: https://pro-api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:56:28,660 - api - ERROR - API error details: {'timestamp': '2025-05-09T16:56:28.614+00:00', 'error_code': 10011, 'status': {'error_message': 'If you are using Demo API key, please change your root URL  from pro-api.coingecko.com to api.coingecko.com  Please refer here for more details: https://docs.coingecko.com/v3.0.1/reference/introduction'}}
+2025-05-09 13:56:28,661 - __main__ - ERROR - Error fetching data: 400 Client Error: Bad Request for url: https://pro-api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:57:29,516 - root - INFO - Logging configured successfully
+2025-05-09 13:57:29,517 - __main__ - INFO - Fetching data for bitcoin on 2023-05-01
+2025-05-09 13:57:30,643 - api - ERROR - HTTP error occurred: 400 Client Error: Bad Request for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:57:30,644 - api - ERROR - API error details: {'timestamp': '2025-05-09T16:57:30.428+00:00', 'error_code': 10010, 'status': {'error_message': 'If you are using Pro API key, please change your root URL from api.coingecko.com to pro-api.coingecko.com  Please refer here for more details: https://docs.coingecko.com/reference/authentication'}}
+2025-05-09 13:57:30,645 - api - INFO - Retrying in 2 seconds (attempt 1/3)
+2025-05-09 13:57:32,989 - api - ERROR - HTTP error occurred: 400 Client Error: Bad Request for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:57:32,990 - api - ERROR - API error details: {'timestamp': '2025-05-09T16:57:32.818+00:00', 'error_code': 10010, 'status': {'error_message': 'If you are using Pro API key, please change your root URL from api.coingecko.com to pro-api.coingecko.com  Please refer here for more details: https://docs.coingecko.com/reference/authentication'}}
+2025-05-09 13:57:32,990 - api - INFO - Retrying in 2 seconds (attempt 2/3)
+2025-05-09 13:57:35,615 - api - ERROR - HTTP error occurred: 400 Client Error: Bad Request for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:57:35,615 - api - ERROR - API error details: {'timestamp': '2025-05-09T16:57:35.438+00:00', 'error_code': 10010, 'status': {'error_message': 'If you are using Pro API key, please change your root URL from api.coingecko.com to pro-api.coingecko.com  Please refer here for more details: https://docs.coingecko.com/reference/authentication'}}
+2025-05-09 13:57:35,616 - __main__ - ERROR - Error fetching data: 400 Client Error: Bad Request for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:58:21,986 - root - INFO - Logging configured successfully
+2025-05-09 13:58:21,987 - __main__ - INFO - Fetching data for bitcoin on 2023-05-01
+2025-05-09 13:58:23,067 - api - ERROR - HTTP error occurred: 401 Client Error: Unauthorized for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:58:23,068 - api - ERROR - API error details: {'error': {'status': {'timestamp': '2025-05-09T16:58:22.901+00:00', 'error_code': 10012, 'error_message': 'Your request exceeds the allowed time range. Public API users are limited to querying historical data within the past 365 days. Upgrade to a paid plan to enjoy full historical data access: https://www.coingecko.com/en/api/pricing. '}}}
+2025-05-09 13:58:23,068 - api - INFO - Retrying in 2 seconds (attempt 1/3)
+2025-05-09 13:58:25,436 - api - ERROR - HTTP error occurred: 401 Client Error: Unauthorized for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:58:25,436 - api - ERROR - API error details: {'error': {'status': {'timestamp': '2025-05-09T16:58:25.257+00:00', 'error_code': 10012, 'error_message': 'Your request exceeds the allowed time range. Public API users are limited to querying historical data within the past 365 days. Upgrade to a paid plan to enjoy full historical data access: https://www.coingecko.com/en/api/pricing. '}}}
+2025-05-09 13:58:25,437 - api - INFO - Retrying in 2 seconds (attempt 2/3)
+2025-05-09 13:58:27,777 - api - ERROR - HTTP error occurred: 401 Client Error: Unauthorized for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:58:27,778 - api - ERROR - API error details: {'error': {'status': {'timestamp': '2025-05-09T16:58:27.615+00:00', 'error_code': 10012, 'error_message': 'Your request exceeds the allowed time range. Public API users are limited to querying historical data within the past 365 days. Upgrade to a paid plan to enjoy full historical data access: https://www.coingecko.com/en/api/pricing. '}}}
+2025-05-09 13:58:27,779 - __main__ - ERROR - Error fetching data: 401 Client Error: Unauthorized for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-05-2023
+2025-05-09 13:58:51,178 - root - INFO - Logging configured successfully
+2025-05-09 13:58:51,178 - __main__ - INFO - Fetching data for bitcoin on 2024-12-01
+2025-05-09 13:58:52,585 - storage - INFO - Data saved to data\bitcoin\bitcoin_2024-12-01.json
+2025-05-09 13:58:52,586 - __main__ - INFO - Data saved successfully to data\bitcoin\bitcoin_2024-12-01.json
+2025-05-09 13:59:17,521 - root - INFO - Logging configured successfully
+2025-05-09 13:59:17,521 - __main__ - INFO - Fetching data for bitcoin on 2024-12-01
+2025-05-09 13:59:18,409 - storage - INFO - Data saved to data\bitcoin\bitcoin_2024-12-01.json
+2025-05-09 13:59:18,410 - __main__ - INFO - Data saved successfully to data\bitcoin\bitcoin_2024-12-01.json
+2025-05-09 15:43:18,105 - root - INFO - Logging configured successfully
+2025-05-09 15:43:18,106 - __main__ - INFO - Fetching data for ethereum on 2024-12-01
+2025-05-09 15:43:19,869 - storage - INFO - Data saved to data\ethereum\ethereum_2024-12-01.json
+2025-05-09 15:43:19,870 - __main__ - INFO - Data saved successfully to data\ethereum\ethereum_2024-12-01.json

@@ -1,0 +1,8 @@
+2025-05-09 12:31:56,494 - root - INFO - Logging configured successfully
+2025-05-09 12:31:56,494 - __main__ - INFO - Fetching data for bitcoin on 2023-01-01
+2025-05-09 12:31:57,623 - api - ERROR - HTTP error occurred: 400 Client Error: Bad Request for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-01-2023
+2025-05-09 12:31:57,624 - api - INFO - Retrying in 2 seconds (attempt 1/3)
+2025-05-09 12:31:59,969 - api - ERROR - HTTP error occurred: 400 Client Error: Bad Request for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-01-2023
+2025-05-09 12:31:59,969 - api - INFO - Retrying in 2 seconds (attempt 2/3)
+2025-05-09 12:32:02,337 - api - ERROR - HTTP error occurred: 400 Client Error: Bad Request for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-01-2023
+2025-05-09 12:32:02,338 - __main__ - ERROR - Error fetching data: 400 Client Error: Bad Request for url: https://api.coingecko.com/api/v3/coins/bitcoin/history?date=01-01-2023
