@@ -17,13 +17,19 @@ class CoinGeckoAPI:
     BASE_URL = "https://api.coingecko.com/api/v3"
     
     def __init__(self, api_key=None):
+        """
+        Initialize the CoinGecko API client.
+        
+        Args:
+            api_key (str, optional): API key for CoinGecko. Defaults to environment variable.
+        """
         self.api_key = api_key or API_KEY
         self.session = requests.Session()
         # Add API key to headers
         self.session.headers.update({
-            # La API gratis usa 'x-cg-demo-api-key' como encabezado
+            # La API gratuita usa 'x-cg-demo-api-key' como encabezado
             'x-cg-demo-api-key': self.api_key,
-            'User-Agent': 'CryptoFetcher/1.0'
+            'User-Agent': 'CryptoDataPipeline/1.0'
         })
     
     def get_coin_history(self, coin_id, date):
@@ -83,3 +89,44 @@ class CoinGeckoAPI:
                     
         # If we get here, all retries failed
         raise requests.exceptions.RequestException("Failed to get data after multiple attempts")
+    
+    def get_coin_list(self):
+        """
+        Get list of all available coins.
+        
+        Returns:
+            list: List of available coins with their IDs
+        """
+        endpoint = f"{self.BASE_URL}/coins/list"
+        
+        logger.debug("Requesting coin list from %s", endpoint)
+        
+        max_retries = 3
+        retry_delay = 2  # seconds
+        
+        for attempt in range(max_retries):
+            try:
+                response = self.session.get(endpoint)
+                response.raise_for_status()
+                
+                logger.debug("API request succeeded with status code %s", response.status_code)
+                return response.json()
+                
+            except requests.exceptions.HTTPError as e:
+                logger.error("HTTP error occurred: %s", e)
+                if attempt < max_retries - 1:
+                    logger.info("Retrying in %s seconds (attempt %s/%s)", retry_delay, attempt + 1, max_retries)
+                    time.sleep(retry_delay)
+                else:
+                    raise
+                    
+            except requests.exceptions.RequestException as e:
+                logger.error("Request error occurred: %s", e)
+                if attempt < max_retries - 1:
+                    logger.info("Retrying in %s seconds (attempt %s/%s)", retry_delay, attempt + 1, max_retries)
+                    time.sleep(retry_delay)
+                else:
+                    raise
+                    
+        # If we get here, all retries failed
+        raise requests.exceptions.RequestException("Failed to get coin list after multiple attempts")
