@@ -166,7 +166,11 @@ docker-compose run app get-history --coin bitcoin --date 2025-01-01 --store-db
 Para el procesamiento en lote con Docker:
 
 ```
-docker-compose run app bulk-process --coin bitcoin --start-date 2023-01-01 --end-date 2023-01-31 --store-db
+docker-compose run app bulk-process --coin bitcoin --start-date 2025-01-01 --end-date 2025-05-13 --store-db
+
+docker-compose run app bulk-process --coin ethereum --start-date 2025-01-01 --end-date 2025-05-13 --store-db
+
+docker-compose run app bulk-process --coin cardano --start-date 2025-01-01 --end-date 2025-05-13 --store-db
 ```
 
 ## Variables de Entorno
@@ -177,6 +181,96 @@ Crea un archivo `.env` con las siguientes variables:
 DATABASE_URL=postgresql://username:password@localhost:5432/crypto
 COINGECKO_API_KEY=tu_api_key_si_está_disponible
 ```
+
+## Configuración de la Base de Datos
+
+### 🛠️ Creación de tablas en PostgreSQL
+
+Para inicializar la base de datos con las tablas necesarias (coin_history y coin_monthly_aggregates), sigue estos pasos:
+
+1. **Asegúrate de estar en el directorio del proyecto**
+   ```bash
+   cd crypto-data-pipeline
+   ```
+
+2. **Verificar que el archivo SQL existe**
+   ```bash
+   dir sql\create_tables.sql
+   ```
+
+3. **Copiar el archivo al contenedor de PostgreSQL**
+   ```bash
+   docker cp sql/create_tables.sql crypto-data-pipeline-db-1:/create_tables.sql
+   ```
+   Asegúrate de reemplazar el nombre del contenedor si usas uno distinto.
+
+4. **Ejecutar el script SQL en la base de datos**
+   ```bash
+   docker exec -it crypto-data-pipeline-db-1 psql -U postgres -d postgres -f /create_tables.sql
+   ```
+   Deberías ver mensajes como CREATE TABLE, CREATE INDEX, y COMMENT, indicando que las tablas fueron creadas exitosamente.
+
+5. **Verificar que las tablas fueron creadas**
+   ```bash
+   docker exec -it crypto-data-pipeline-db-1 psql -U postgres -d postgres
+   ```
+   Y dentro del shell de PostgreSQL, ejecuta:
+   ```sql
+   \dt
+   ```
+   Deberías ver:
+   ```
+              List of relations
+  Schema |          Name           | Type  |  Owner
+ --------+-------------------------+-------+----------
+  public | coin_history            | table | postgres
+  public | coin_monthly_aggregates | table | postgres
+   ```
+
+### 📊 Ejecutando Consultas SQL para Análisis (Sección 3)
+
+Para responder a las preguntas de la Sección 3, sigue estos pasos:
+
+1. **Cargar datos desde archivos JSON a la base de datos**
+
+   Primero, carga los datos JSON a la base de datos ejecutando el script `load_data.py`:
+
+   ```bash
+   python load_data.py
+   ```
+
+   Este script busca todos los archivos JSON en la carpeta `data/` y los carga en la tabla `coin_history`.
+
+2. **Conéctate a la base de datos PostgreSQL**
+   ```bash
+   docker-compose exec db psql -U postgres -d postgres
+   ```
+
+3. **Ejecutar las consultas SQL desde el archivo `analysis_queries.sql`**
+   
+   El archivo `analysis_queries.sql` contiene dos consultas principales para responder a las preguntas de la Sección 3:
+   
+   - **Query 1**: Calcula el precio promedio por mes para cada moneda
+   - **Query 2**: Calcula el aumento después de caídas consecutivas de más de 3 días
+
+   Puedes copiar y pegar estas consultas desde el archivo, o ejecutar el archivo completo con:
+
+   ```sql
+   \i /sql/analysis_queries.sql
+   ```
+
+4. **Para guardar los resultados en archivos**
+   ```sql
+   \o resultados_precio_mensual.txt
+   -- Aquí va la consulta 1 (precio promedio por mes)
+   \o
+   
+   \o resultados_aumento_tras_caidas.txt
+   -- Aquí va la consulta 2 (aumento tras caídas consecutivas)
+   \o
+   ```
+
+Consulta el archivo `sql/analysis_queries.sql` para ver la documentación detallada de las consultas.
 
 ## Ejecución Programada
 
