@@ -1,6 +1,6 @@
--- Query 1: Average price for each coin by month
--- Computes the average USD price per coin, grouped by year and month.
--- Assumptions: Includes all available data; NULL prices are excluded.
+-- Query 1: Precio promedio por moneda por mes
+-- Calcula el precio promedio en USD por moneda, agrupado por año y mes.
+-- Suposiciones: Incluye todos los datos disponibles; los precios nulos se excluyen.
 SELECT 
     coin_id,
     EXTRACT(YEAR FROM fetch_date) AS year,
@@ -11,15 +11,15 @@ WHERE price_usd IS NOT NULL
 GROUP BY coin_id, EXTRACT(YEAR FROM fetch_date), EXTRACT(MONTH FROM fetch_date)
 ORDER BY coin_id, year, month;
 
--- Query 2: Average price increase after 3+ consecutive drop days
--- Identifies periods where a coin's price drops for 3+ consecutive days,
--- calculates the average percentage increase to the first recovery price (price > lowest price during drop),
--- and includes the latest market cap from response_data.
--- Assumptions: 
--- - A drop is any day where price_usd < previous day's price.
--- - Recovery is the first day after the drop sequence where price exceeds the lowest price in the sequence.
--- - Uses all available data (no time span limit).
--- - If market_cap_usd is missing in JSON, returns NULL.
+-- Query 2: Precio promedio de aumento después de 3+ días consecutivos de caída
+-- Identifica períodos donde el precio de una moneda cae por 3+ días consecutivos,
+-- calcula el promedio de aumento porcentual al primer precio de recuperación (precio > precio más bajo durante la caída),
+-- e incluye el último capital mercado desde response_data.
+-- Suposiciones: 
+-- - Una caída es cualquier día donde price_usd < precio del día anterior.
+-- - La recuperación es el primer día después de la secuencia de caída donde el precio excede el precio más bajo en la secuencia.
+-- - Utiliza todos los datos disponibles (no límite de rango de tiempo).
+-- - Si market_cap_usd está ausente en JSON, devuelve NULL.
 WITH daily_changes AS (
     SELECT
         coin_id,

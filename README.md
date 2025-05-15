@@ -105,6 +105,7 @@ python -m crypto_app.cli get-history --coin bitcoin --date 2025-01-01 --store-db
 ```
 
 #### Procesamiento diario automatizado
+La aplicación incluye funcionalidad para ejecutarse automáticamente cada día a las 3:00 AM y obtener datos para bitcoin, ethereum y cardano.
 
 Para ejecutar la obtención diaria de datos para bitcoin, ethereum y cardano:
 
@@ -137,7 +138,12 @@ Para almacenar también en la base de datos:
 ```
 python -m crypto_app.cli bulk-process --coin bitcoin --start-date 2023-01-01 --end-date 2023-01-31 --store-db
 ```
-
+Si corriste antes una fecha pero no la almacenaste en la base de datos, no hace falta volver a correrla. Podés ejecutar el código 
+```bash
+   python load_data.py
+   ```
+Este script busca todos los archivos JSON en la carpeta `data/` y los carga en la tabla `coin_history`.
+   
 
 ## Ejemplos de Ejecución con Docker
 
@@ -175,14 +181,14 @@ COINGECKO_API_KEY=tu_api_key_si_está_disponible
 
 Para inicializar la base de datos con las tablas necesarias (coin_history y coin_monthly_aggregates), sigue estos pasos:
 
-1. **Asegúrate de estar en el directorio del proyecto**
+1. **Asegurate de estar en el directorio del proyecto**
    ```bash
    cd crypto-data-pipeline
    ```
 
 2. **Verificar que el archivo SQL existe**
    ```bash
-   dir sql\create_tables.sql
+   dir sql/create_tables.sql
    ```
 
 3. **Copiar el archivo al contenedor de PostgreSQL**
@@ -216,67 +222,28 @@ Para inicializar la base de datos con las tablas necesarias (coin_history y coin
 
 Para responder a las preguntas de la Sección 3, sigue estos pasos:
 
-1. **Cargar datos desde archivos JSON a la base de datos**
-
-   Primero, carga los datos JSON a la base de datos ejecutando el script `load_data.py`:
-
-   ```bash
-   python load_data.py
-   ```
-
-   Este script busca todos los archivos JSON en la carpeta `data/` y los carga en la tabla `coin_history`.
-
-2. **Conéctate a la base de datos PostgreSQL**
+1. **Conectate a la base de datos PostgreSQL**
    ```bash
    docker-compose exec db psql -U postgres -d postgres
    ```
 
-3. **Ejecutar las consultas SQL desde el archivo `analysis_queries.sql`**
+2. **Ejecutá las consultas SQL desde el archivo `analysis_queries.sql`**
    
    El archivo `analysis_queries.sql` contiene dos consultas principales para responder a las preguntas de la Sección 3:
    
    - **Query 1**: Calcula el precio promedio por mes para cada moneda
    - **Query 2**: Calcula el aumento después de caídas consecutivas de más de 3 días
 
-   Puedes copiar y pegar estas consultas desde el archivo, o ejecutar el archivo completo con:
+   Podés copiar y pegar estas consultas desde el archivo, o ejecutar el archivo completo con:
 
    ```sql
-   \i /sql/analysis_queries.sql
+   \i /docker-entrypoint-initdb.d/analysis_queries.sql
    ```
 
-4. **Para guardar los resultados en archivos**
-   ```sql
-   \o resultados_precio_mensual.txt
-   -- Aquí va la consulta 1 (precio promedio por mes)
-   \o
-   
-   \o resultados_aumento_tras_caidas.txt
-   -- Aquí va la consulta 2 (aumento tras caídas consecutivas)
-   \o
-   ```
+Consultá el archivo `sql/analysis_queries.sql` para ver la documentación detallada de las consultas.
 
-Consulta el archivo `sql/analysis_queries.sql` para ver la documentación detallada de las consultas.
 
-## Ejecución Programada
 
-La aplicación incluye funcionalidad para ejecutarse automáticamente cada día a las 3:00 AM y obtener datos para bitcoin, ethereum y cardano.
-
-### Configuración en Windows
-
-Ejecuta el siguiente comando para ver las instrucciones de configuración:
-
-```
-python -m crypto_app.daily_fetch --setup
-```
-
-Sigue las instrucciones proporcionadas para configurar el Programador de tareas de Windows.
-
-### Configuración en Linux
-
-En sistemas Linux, puedes configurar un trabajo cron ejecutando:
-
-```
-python -m crypto_app.daily_fetch --setup
 ```
 
 Sigue las instrucciones para agregar la entrada necesaria a tu crontab.
@@ -290,4 +257,4 @@ cd c:/Users/corebi/MLE Mutt/crypto-data-pipeline
 docker-compose up -d
 ```
 
-Ejecutar las notebooks de análisis exploratorio de datos y de predicción de precios
+Ejecutá las notebooks de análisis exploratorio de datos y de predicción de precios
