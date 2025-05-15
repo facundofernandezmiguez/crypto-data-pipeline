@@ -22,8 +22,8 @@ crypto-data-pipeline/
 │   └── daily_fetch.py           # Script para ejecución diaria programada
 │
 ├── sql/                         # Consultas SQL
-│   ├── create_tables.sql        # Creación de tablas DDL
-│   └── analysis_queries.sql     # Consultas DQL para promedios mensuales y análisis de recuperación
+│   ├── create_tables.sql        # Creación de tablas 
+│   └── analysis_queries.sql     # Queries ejercicio 3
 │
 ├── analysis/                    # Scripts de análisis en Python
 │   ├── feature_engineering.py   # Generación de características + exportación de CSV/gráficos
