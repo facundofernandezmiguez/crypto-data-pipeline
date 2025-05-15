@@ -158,6 +158,8 @@ docker-compose run app bulk-process --coin cardano --start-date 2025-01-01 --end
 ```
 Aclaración: debido a que esta es la versión free de la api, muchas veces se alcanza el rate limit. Tuve que reejecutar varias veces algunas fechas especificas para obtener todos los datos.
 
+Los archivos json se encuentran en la carpeta /data.
+
 ## Variables de Entorno
 
 Crea un archivo `.env` con las siguientes variables:
