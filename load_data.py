@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 Script para cargar datos JSON de la carpeta data/ a la base de datos PostgreSQL.
+Solo es necesario ejecutar este script si se descargaron datos desde la crypro_app pero no se seleccionó la opción '--store-db'
 """
 import os
 import json

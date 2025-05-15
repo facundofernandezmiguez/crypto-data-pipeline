@@ -58,9 +58,9 @@ class Database:
             with open(script_path, 'r') as f:
                 sql_script = f.read()
             
-            with self.engine.connect() as conn:
+            with self.engine.begin() as conn:
                 conn.execute(text(sql_script))
-                conn.commit()
+                # begin() maneja el commit automáticamente
             
             logger.info("Database initialized successfully")
             return True
@@ -90,36 +90,55 @@ class Database:
             if data.get('market_data') and data['market_data'].get('current_price'):
                 price_usd = data['market_data']['current_price'].get('usd')
             
-            # Prepare data for insertion
-            insert_data = {
-                'coin_id': coin_id,
-                'price_usd': price_usd,
-                'fetch_date': date_obj,
-                'response_data': json.dumps(data),
-                'created_at': datetime.now().date()
-            }
+            # Conectar directamente con psycopg2 para evitar problemas de SQLAlchemy
+            import psycopg2
+            from psycopg2.extras import Json
             
-            # Desde SQLAlchemy 1.4, se recomienda usar begin() para manejar transacciones
-            with self.engine.begin() as conn:
-                # Try to insert, update if already exists
-                # Usamos el formato de parámetros %(name)s para evitar conflictos con PostgreSQL
-                stmt = text("""
-                    INSERT INTO coin_history 
-                    (coin_id, price_usd, fetch_date, response_data, created_at)
-                    VALUES (%(coin_id)s, %(price_usd)s, %(fetch_date)s, %(response_data)s::jsonb, %(created_at)s)
-                    ON CONFLICT (coin_id, fetch_date)
-                    DO UPDATE SET
-                        price_usd = EXCLUDED.price_usd,
-                        response_data = EXCLUDED.response_data,
-                        created_at = EXCLUDED.created_at
-                """)
-                
-                conn.execute(stmt, insert_data)
-                
-                # Update monthly aggregates
-                self._update_monthly_aggregates(conn, coin_id, date_obj.year, date_obj.month)
-                
-                # No necesitamos conn.commit() porque begin() maneja esto automáticamente
+            # Extraer los parámetros de conexión de la URL
+            conn_parts = self.db_url.replace('postgresql://', '').split('@')
+            user_pass = conn_parts[0].split(':')
+            host_db = conn_parts[1].split('/')
+            host_port = host_db[0].split(':')
+            
+            # Crear conexión directa
+            conn = psycopg2.connect(
+                host=host_port[0],
+                port=host_port[1] if len(host_port) > 1 else 5432,
+                dbname=host_db[1],
+                user=user_pass[0],
+                password=user_pass[1]
+            )
+            cursor = conn.cursor()
+            
+            # Verificar si ya existe un registro
+            check_query = "SELECT COUNT(*) FROM coin_history WHERE coin_id = %s AND fetch_date = %s"
+            cursor.execute(check_query, (coin_id, date_obj))
+            exists = cursor.fetchone()[0] > 0
+            
+            if exists:
+                # Actualizar registro existente
+                update_query = """
+                UPDATE coin_history 
+                SET price_usd = %s, response_data = %s, created_at = %s
+                WHERE coin_id = %s AND fetch_date = %s
+                """
+                cursor.execute(update_query, (price_usd, Json(data), datetime.now().date(), coin_id, date_obj))
+            else:
+                # Insertar nuevo registro
+                insert_query = """
+                INSERT INTO coin_history 
+                (coin_id, price_usd, fetch_date, response_data, created_at)
+                VALUES (%s, %s, %s, %s, %s)
+                """
+                cursor.execute(insert_query, (coin_id, price_usd, date_obj, Json(data), datetime.now().date()))
+            
+            # Actualizar agregados mensuales
+            self._update_monthly_aggregates_psycopg2(cursor, coin_id, date_obj.year, date_obj.month)
+            
+            # Commit y cerrar
+            conn.commit()
+            cursor.close()
+            conn.close()
             
             logger.info("Data saved to database for %s on %s", coin_id, date_obj)
             return True
@@ -127,6 +146,55 @@ class Database:
         except Exception as e:
             logger.error("Error saving data to database: %s", str(e))
             return False
+            
+    def _update_monthly_aggregates_psycopg2(self, cursor, coin_id: str, year: int, month: int):
+        """
+        Update monthly aggregates for a specific coin using psycopg2.
+        
+        Args:
+            cursor: Database cursor
+            coin_id (str): Coin ID
+            year (int): Year
+            month (int): Month (1-12)
+        """
+        try:
+            # Calculate min/max for the month
+            min_max_query = """
+            SELECT 
+                MIN(price_usd) as min_price, 
+                MAX(price_usd) as max_price
+            FROM coin_history
+            WHERE coin_id = %s
+            AND EXTRACT(YEAR FROM fetch_date) = %s
+            AND EXTRACT(MONTH FROM fetch_date) = %s
+            AND price_usd IS NOT NULL
+            """
+            
+            cursor.execute(min_max_query, (coin_id, year, month))
+            result = cursor.fetchone()
+            
+            if result and (result[0] is not None or result[1] is not None):
+                min_price, max_price = result
+                
+                # Insert or update aggregate record
+                upsert_query = """
+                INSERT INTO coin_monthly_aggregates 
+                (coin_id, year, month, min_price_usd, max_price_usd, updated_at)
+                VALUES (%s, %s, %s, %s, %s, CURRENT_TIMESTAMP)
+                ON CONFLICT (coin_id, year, month)
+                DO UPDATE SET
+                    min_price_usd = %s,
+                    max_price_usd = %s,
+                    updated_at = CURRENT_TIMESTAMP
+                """
+                
+                cursor.execute(upsert_query, (coin_id, year, month, min_price, max_price, min_price, max_price))
+                
+                logger.info("Monthly aggregates updated for %s in %s-%s", coin_id, year, month)
+        
+        except Exception as e:
+            logger.error("Error updating monthly aggregates: %s", str(e))
+            # Don't raise exception to avoid interrupting the main transaction
     
     def _update_monthly_aggregates(self, conn, coin_id: str, year: int, month: int):
         """

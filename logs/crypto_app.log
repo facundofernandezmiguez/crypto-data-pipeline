@@ -20,3 +20,141 @@ LINE 4: ...'bitcoin', 93507.85874741491, '2025-01-01'::date, :response_...
 [parameters: {'coin_id': 'bitcoin', 'price_usd': 93507.85874741491, 'fetch_date': datetime.date(2025, 1, 1), 'created_at': datetime.date(2025, 5, 15)}]
 (Background on this error at: https://sqlalche.me/e/14/f405)
 2025-05-15 16:15:53,207 - __main__ - ERROR - Failed to save data to PostgreSQL database
+2025-05-15 17:49:54,796 - root - INFO - Logging configured successfully
+2025-05-15 17:49:54,798 - __main__ - INFO - Fetching data for bitcoin on 2025-01-01
+2025-05-15 17:49:56,018 - __main__ - INFO - Data saved successfully to /app/data/bitcoin/bitcoin_2025-01-01.json
+2025-05-15 17:49:56,175 - crypto_app.db - INFO - Connected to database: db:5432/crypto
+2025-05-15 17:49:56,274 - crypto_app.db - ERROR - Error initializing database: 'Connection' object has no attribute 'commit'
+2025-05-15 17:49:56,279 - crypto_app.db - ERROR - Error saving data to database: (psycopg2.errors.SyntaxError) syntax error at or near ":"
+LINE 4: ...'bitcoin', 93507.85874741491, '2025-01-01'::date, :response_...
+                                                             ^
+
+[SQL: 
+                    INSERT INTO coin_history 
+                    (coin_id, price_usd, fetch_date, response_data, created_at)
+                    VALUES (%(coin_id)s, %(price_usd)s, %(fetch_date)s, :response_data::jsonb, %(created_at)s)
+                    ON CONFLICT (coin_id, fetch_date)
+                    DO UPDATE SET
+                        price_usd = EXCLUDED.price_usd,
+                        response_data = EXCLUDED.response_data,
+                        created_at = EXCLUDED.created_at
+                ]
+[parameters: {'coin_id': 'bitcoin', 'price_usd': 93507.85874741491, 'fetch_date': datetime.date(2025, 1, 1), 'created_at': datetime.date(2025, 5, 15)}]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+2025-05-15 17:49:56,281 - __main__ - ERROR - Failed to save data to PostgreSQL database
+2025-05-15 17:52:16,390 - root - INFO - Logging configured successfully
+2025-05-15 17:52:16,393 - __main__ - INFO - Fetching data for bitcoin on 2025-01-01
+2025-05-15 17:52:17,021 - __main__ - INFO - Data saved successfully to /app/data/bitcoin/bitcoin_2025-01-01.json
+2025-05-15 17:52:17,217 - crypto_app.db - INFO - Connected to database: db:5432/crypto
+2025-05-15 17:52:17,465 - crypto_app.db - ERROR - Error initializing database: 'Connection' object has no attribute 'commit'
+2025-05-15 17:52:17,471 - crypto_app.db - ERROR - Error saving data to database: (psycopg2.errors.SyntaxError) syntax error at or near ":"
+LINE 4: ...'bitcoin', 93507.85874741491, '2025-01-01'::date, :response_...
+                                                             ^
+
+[SQL: 
+                    INSERT INTO coin_history 
+                    (coin_id, price_usd, fetch_date, response_data, created_at)
+                    VALUES (%(coin_id)s, %(price_usd)s, %(fetch_date)s, :response_data::jsonb, %(created_at)s)
+                    ON CONFLICT (coin_id, fetch_date)
+                    DO UPDATE SET
+                        price_usd = EXCLUDED.price_usd,
+                        response_data = EXCLUDED.response_data,
+                        created_at = EXCLUDED.created_at
+                ]
+[parameters: {'coin_id': 'bitcoin', 'price_usd': 93507.85874741491, 'fetch_date': datetime.date(2025, 1, 1), 'created_at': datetime.date(2025, 5, 15)}]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+2025-05-15 17:52:17,473 - __main__ - ERROR - Failed to save data to PostgreSQL database
+2025-05-15 17:54:16,779 - root - INFO - Logging configured successfully
+2025-05-15 17:54:16,781 - __main__ - INFO - Fetching data for bitcoin on 2025-01-01
+2025-05-15 17:54:17,291 - __main__ - INFO - Data saved successfully to /app/data/bitcoin/bitcoin_2025-01-01.json
+2025-05-15 17:54:17,333 - crypto_app.db - INFO - Connected to database: db:5432/crypto
+2025-05-15 17:54:17,368 - crypto_app.db - ERROR - Error initializing database: 'Connection' object has no attribute 'commit'
+2025-05-15 17:54:17,373 - crypto_app.db - ERROR - Error saving data to database: (psycopg2.errors.SyntaxError) syntax error at or near ":"
+LINE 4: ...'bitcoin', 93507.85874741491, '2025-01-01'::date, :response_...
+                                                             ^
+
+[SQL: 
+                    INSERT INTO coin_history 
+                    (coin_id, price_usd, fetch_date, response_data, created_at)
+                    VALUES (%(coin_id)s, %(price_usd)s, %(fetch_date)s, :response_data::jsonb, %(created_at)s)
+                    ON CONFLICT (coin_id, fetch_date)
+                    DO UPDATE SET
+                        price_usd = EXCLUDED.price_usd,
+                        response_data = EXCLUDED.response_data,
+                        created_at = EXCLUDED.created_at
+                ]
+[parameters: {'coin_id': 'bitcoin', 'price_usd': 93507.85874741491, 'fetch_date': datetime.date(2025, 1, 1), 'created_at': datetime.date(2025, 5, 15)}]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+2025-05-15 17:54:17,374 - __main__ - ERROR - Failed to save data to PostgreSQL database
+2025-05-15 17:59:39,425 - root - INFO - Logging configured successfully
+2025-05-15 17:59:39,426 - __main__ - INFO - Fetching data for bitcoin on 2025-01-01
+2025-05-15 17:59:39,761 - __main__ - INFO - Data saved successfully to /app/data/bitcoin/bitcoin_2025-01-01.json
+2025-05-15 17:59:39,822 - crypto_app.db - INFO - Connected to database: db:5432/crypto
+2025-05-15 17:59:39,855 - crypto_app.db - INFO - Database initialized successfully
+2025-05-15 17:59:39,860 - crypto_app.db - ERROR - Error saving data to database: (psycopg2.errors.SyntaxError) syntax error at or near "%"
+LINE 4:                     VALUES (%(coin_id)s, %(price_usd)s, %(fe...
+                                    ^
+
+[SQL: 
+                    INSERT INTO coin_history 
+                    (coin_id, price_usd, fetch_date, response_data, created_at)
+                    VALUES (%%(coin_id)s, %%(price_usd)s, %%(fetch_date)s, %%(response_data)s::jsonb, %%(created_at)s)
+                    ON CONFLICT (coin_id, fetch_date)
+                    DO UPDATE SET
+                        price_usd = EXCLUDED.price_usd,
+                        response_data = EXCLUDED.response_data,
+                        created_at = EXCLUDED.created_at
+                ]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+2025-05-15 17:59:39,861 - __main__ - ERROR - Failed to save data to PostgreSQL database
+2025-05-15 18:01:04,843 - root - INFO - Logging configured successfully
+2025-05-15 18:01:04,845 - __main__ - INFO - Fetching data for bitcoin on 2025-01-01
+2025-05-15 18:01:05,602 - __main__ - INFO - Data saved successfully to /app/data/bitcoin/bitcoin_2025-01-01.json
+2025-05-15 18:01:05,642 - crypto_app.db - INFO - Connected to database: db:5432/crypto
+2025-05-15 18:01:05,674 - crypto_app.db - INFO - Database initialized successfully
+2025-05-15 18:01:05,678 - crypto_app.db - ERROR - Error saving data to database: (psycopg2.errors.SyntaxError) syntax error at or near "%"
+LINE 4:                     VALUES (%(coin_id)s, %(price_usd)s, %(fe...
+                                    ^
+
+[SQL: 
+                    INSERT INTO coin_history 
+                    (coin_id, price_usd, fetch_date, response_data, created_at)
+                    VALUES (%%(coin_id)s, %%(price_usd)s, %%(fetch_date)s, %%(response_data)s::jsonb, %%(created_at)s)
+                    ON CONFLICT (coin_id, fetch_date)
+                    DO UPDATE SET
+                        price_usd = EXCLUDED.price_usd,
+                        response_data = EXCLUDED.response_data,
+                        created_at = EXCLUDED.created_at
+                ]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+2025-05-15 18:01:05,682 - __main__ - ERROR - Failed to save data to PostgreSQL database
+2025-05-15 18:06:39,927 - root - INFO - Logging configured successfully
+2025-05-15 18:06:39,928 - __main__ - INFO - Fetching data for bitcoin on 2025-01-01
+2025-05-15 18:06:40,854 - __main__ - INFO - Data saved successfully to /app/data/bitcoin/bitcoin_2025-01-01.json
+2025-05-15 18:06:40,889 - crypto_app.db - INFO - Connected to database: db:5432/crypto
+2025-05-15 18:06:41,012 - crypto_app.db - INFO - Database initialized successfully
+2025-05-15 18:06:41,032 - crypto_app.db - ERROR - Error saving data to database: (psycopg2.errors.SyntaxError) syntax error at or near ":"
+LINE 4: ...'bitcoin', 93507.85874741491, '2025-01-01'::date, :response_...
+                                                             ^
+
+[SQL: 
+                    INSERT INTO coin_history 
+                    (coin_id, price_usd, fetch_date, response_data, created_at)
+                    VALUES (%(coin_id)s, %(price_usd)s, %(fetch_date)s, :response_data::jsonb, %(created_at)s)
+                    ON CONFLICT (coin_id, fetch_date)
+                    DO UPDATE SET
+                        price_usd = EXCLUDED.price_usd,
+                        response_data = EXCLUDED.response_data,
+                        created_at = EXCLUDED.created_at
+                ]
+[parameters: {'coin_id': 'bitcoin', 'price_usd': 93507.85874741491, 'fetch_date': datetime.date(2025, 1, 1), 'created_at': datetime.date(2025, 5, 15)}]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+2025-05-15 18:06:41,038 - __main__ - ERROR - Failed to save data to PostgreSQL database
+2025-05-15 18:12:34,451 - root - INFO - Logging configured successfully
+2025-05-15 18:12:34,453 - __main__ - INFO - Fetching data for bitcoin on 2025-01-01
+2025-05-15 18:12:35,056 - __main__ - INFO - Data saved successfully to /app/data/bitcoin/bitcoin_2025-01-01.json
+2025-05-15 18:12:35,193 - crypto_app.db - INFO - Connected to database: db:5432/crypto
+2025-05-15 18:12:35,386 - crypto_app.db - INFO - Database initialized successfully
+2025-05-15 18:12:35,456 - crypto_app.db - INFO - Monthly aggregates updated for bitcoin in 2025-1
+2025-05-15 18:12:35,463 - crypto_app.db - INFO - Data saved to database for bitcoin on 2025-01-01
+2025-05-15 18:12:35,464 - __main__ - INFO - Data saved to PostgreSQL database
