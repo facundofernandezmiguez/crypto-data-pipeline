@@ -43,9 +43,7 @@ crypto-data-pipeline/
 └── README.md                    # Documentación del proyecto
 ```
 
-## Instalación
-
-### Opción 1: Usando Docker (Recomendado)
+## Instalación usando Docker 
 
 1. Asegúrate de tener Docker y Docker Compose instalados en tu sistema.
 
@@ -61,30 +59,6 @@ crypto-data-pipeline/
    ```
 
 Esto iniciará tanto la aplicación Python como la base de datos PostgreSQL.
-
-### Opción 2: Instalación Manual
-
-1. Clona el repositorio:
-   ```
-   git clone https://github.com/facundofernandezmiguez/crypto-data-pipeline.git
-   cd crypto-data-pipeline
-   ```
-
-2. Crea y activa un entorno virtual:
-   ```
-   python -m venv venv
-   source venv/bin/activate  # En Windows: venv\Scripts\activate
-   ```
-
-3. Instala las dependencias:
-   ```
-   pip install -r requirements.txt
-   ```
-
-4. Configura PostgreSQL por separado e inicializa la base de datos:
-   ```
-   psql -U postgres -f sql/create_tables.sql
-   ```
 
 ## 1. Getting crypto token data 💸
 
