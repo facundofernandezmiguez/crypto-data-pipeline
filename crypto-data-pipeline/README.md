@@ -92,7 +92,7 @@ Esto iniciará tanto la aplicación Python como la base de datos PostgreSQL.
 
 La CLI proporciona varios comandos para la obtención y procesamiento de datos:
 
-#### 1. Obtener datos para una fecha específica
+#### 1. Getting crypto token data 💸
 
 ```
 python -m crypto_app.cli get-history --coin bitcoin --date 2025-01-01
@@ -138,22 +138,6 @@ Para almacenar también en la base de datos:
 python -m crypto_app.cli bulk-process --coin bitcoin --start-date 2023-01-01 --end-date 2023-01-31 --store-db
 ```
 
-### Análisis de Datos
-
-1. Ejecutar ingeniería de características:
-   ```
-   python -m analysis.feature_engineering
-   ```
-
-2. Entrenar y evaluar modelos:
-   ```
-   python -m analysis.regression
-   ```
-
-3. Para análisis interactivo, lanzar Jupyter Notebook:
-   ```
-   jupyter notebook notebooks/coin_analysis.ipynb
-   ```
 
 ## Ejemplos de Ejecución con Docker
 
@@ -172,6 +156,7 @@ docker-compose run app bulk-process --coin ethereum --start-date 2025-01-01 --en
 
 docker-compose run app bulk-process --coin cardano --start-date 2025-01-01 --end-date 2025-05-13 --store-db
 ```
+Aclaración: debido a que esta es la versión free de la api, muchas veces se alcanza el rate limit. Tuve que reejecutar varias veces algunas fechas especificas para obtener todos los datos.
 
 ## Variables de Entorno
 
@@ -182,7 +167,7 @@ DATABASE_URL=postgresql://username:password@localhost:5432/crypto
 COINGECKO_API_KEY=tu_api_key_si_está_disponible
 ```
 
-## Configuración de la Base de Datos
+## 2. Loading data into the database
 
 ### 🛠️ Creación de tablas en PostgreSQL
 
@@ -227,7 +212,7 @@ Para inicializar la base de datos con las tablas necesarias (coin_history y coin
   public | coin_monthly_aggregates | table | postgres
    ```
 
-### 📊 Ejecutando Consultas SQL para Análisis (Sección 3)
+### E3. Analysing coin data with SQL 👓
 
 Para responder a las preguntas de la Sección 3, sigue estos pasos:
 
@@ -296,6 +281,13 @@ python -m crypto_app.daily_fetch --setup
 
 Sigue las instrucciones para agregar la entrada necesaria a tu crontab.
 
-## Licencia
+## 4. Finance Meets Data Science
 
-[MIT](LICENSE)
+Navegar al directorio del proyecto e iniciar los contenedores
+
+```
+cd c:/Users/corebi/MLE Mutt/crypto-data-pipeline
+docker-compose up -d
+```
+
+Ejecutar las notebooks de análisis exploratorio de datos y de predicción de precios
