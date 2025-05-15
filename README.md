@@ -29,8 +29,8 @@ crypto-data-pipeline/
 │   ├── feature_engineering.py   # Generación de características + exportación de CSV/gráficos
 │   └── regression.py            # Entrenamiento/evaluación de modelos
 │
-├── notebooks/                   # Notebooks Jupyter para exploración interactiva
-│   └── coin_analysis.ipynb
+├── notebooks/                   # Notebooks Jupyter - ejercicio 4
+│   └── crypto_EDA.ipynb
 │
 ├── data/                        # Directorio de salida (JSONs, imágenes, CSVs)
 │
