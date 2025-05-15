@@ -185,14 +185,14 @@ Para inicializar la base de datos con las tablas necesarias (coin_history y coin
    ```sql
    \dt
    ```
-   Deberías ver:
+   Deberías ver algo así:
 
 | Schema | Name | Type | Owner |
 |--------|------|------|-------|
 | public | coin_history | table | postgres |
 | public | coin_monthly_aggregates | table | postgres |
 
-### E3. Analysing coin data with SQL 👓
+## E3. Analysing coin data with SQL 👓
 
 Para responder a las preguntas de la Sección 3, sigue estos pasos:
 
@@ -215,12 +215,6 @@ Para responder a las preguntas de la Sección 3, sigue estos pasos:
    ```
 
 Consultá el archivo `sql/analysis_queries.sql` para ver la documentación detallada de las consultas.
-
-
-
-```
-
-Sigue las instrucciones para agregar la entrada necesaria a tu crontab.
 
 ## 4. Finance Meets Data Science
 
