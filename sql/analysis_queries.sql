@@ -71,7 +71,11 @@ price_increases AS (
 latest_market_cap AS (
     SELECT DISTINCT ON (coin_id)
         coin_id,
-        response_data->>'market_cap_usd' AS current_market_cap_usd
+        CASE 
+            WHEN (response_data->'market_data'->'market_cap'->>'usd')::numeric >= 1000000000000 
+            THEN ROUND((response_data->'market_data'->'market_cap'->>'usd')::numeric / 1000000000000, 2) || 'T' 
+            ELSE ROUND((response_data->'market_data'->'market_cap'->>'usd')::numeric / 1000000000, 2) || 'B' 
+        END AS current_market_cap_usd
     FROM coin_history
     ORDER BY coin_id, fetch_date DESC
 )

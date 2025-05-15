@@ -206,7 +206,36 @@ Para responder a las preguntas de la Sección 3, sigue estos pasos:
    El archivo `analysis_queries.sql` contiene dos consultas principales para responder a las preguntas de la Sección 3:
    
    - **Query 1**: Calcula el precio promedio por mes para cada moneda
+
+   Deberías ver este resultado: 
+   
+   | coin_id  | year | month | avg_price_usd |
+   |----------|------|-------|---------------|
+   | bitcoin  | 2025 | 1     | 99696.06      |
+   | bitcoin  | 2025 | 2     | 95922.85      |
+   | bitcoin  | 2025 | 3     | 83974.37      |
+   | bitcoin  | 2025 | 4     | 86068.13      |
+   | bitcoin  | 2025 | 5     | 99448.47      |
+   | cardano  | 2025 | 1     | 0.99          |
+   | cardano  | 2025 | 2     | 0.76          |
+   | cardano  | 2025 | 3     | 0.74          |
+   | cardano  | 2025 | 4     | 0.65          |
+   | cardano  | 2025 | 5     | 0.74          |
+   | ethereum | 2025 | 1     | 3329.32       |
+   | ethereum | 2025 | 2     | 2715.39       |
+   | ethereum | 2025 | 3     | 2043.64       |
+   | ethereum | 2025 | 4     | 1687.62       |
+   | ethereum | 2025 | 5     | 2131.09       |
+
    - **Query 2**: Calcula el aumento después de caídas consecutivas de más de 3 días
+   
+   Deberías ver este resultado: 
+   
+   | coin_id  | avg_price_increase_pct | current_market_cap_usd |
+   |----------|------------------------|-----------------------|
+   | ethereum | 16.44                  | 314.02B                |
+   | cardano  | 9.86                   | 28.79B                 |
+   | bitcoin  | 7.49                   | 2.06T                  |
 
    Podés copiar y pegar estas consultas desde el archivo, o ejecutar el archivo completo con:
 
@@ -218,11 +247,6 @@ Consultá el archivo `sql/analysis_queries.sql` para ver la documentación detal
 
 ## 4. Finance Meets Data Science
 
-Navegar al directorio del proyecto e iniciar los contenedores
 
-```
-cd c:/Users/corebi/MLE Mutt/crypto-data-pipeline
-docker-compose up -d
-```
+Ejecutá las notebooks de análisis exploratorio de datos y de predicción de precios. Se encuentran en la carpeta notebooks.
 
-Ejecutá las notebooks de análisis exploratorio de datos y de predicción de precios
