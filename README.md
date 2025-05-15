@@ -192,7 +192,7 @@ Para inicializar la base de datos con las tablas necesarias (coin_history y coin
 | public | coin_history | table | postgres |
 | public | coin_monthly_aggregates | table | postgres |
 
-## E3. Analysing coin data with SQL 👓
+## 3. Analysing coin data with SQL 👓
 
 Para responder a las preguntas de la Sección 3, sigue estos pasos:
 
