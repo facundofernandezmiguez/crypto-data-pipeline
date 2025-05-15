@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-CLI application to fetch cryptocurrency data from CoinGecko API.
+Aplicación CLI para obtener datos de criptomonedas desde la API de CoinGecko.
 """
 import os
 import click
@@ -17,40 +17,40 @@ from pathlib import Path
 from crypto_app.coingecko_client import CoinGeckoAPI
 from crypto_app.db import Database
 
-# Setup logging
+# Configuración de logging
 logger = logging.getLogger(__name__)
 
 def setup_logging(log_level=logging.INFO):
     """
-    Set up logging configuration.
+    Configurar el sistema de logging.
     
     Args:
-        log_level: The logging level (default: INFO)
+        log_level: El nivel de logging (por defecto: INFO)
     """
-    # Create logs directory if it doesn't exist
+    # Crear directorio de logs si no existe
     log_dir = Path(os.path.join(os.path.dirname(os.path.dirname(__file__)), 'logs'))
     log_dir.mkdir(exist_ok=True)
     
-    # Configure root logger
+    # Configurar logger principal
     logger = logging.getLogger()
     logger.setLevel(log_level)
     
-    # Clear existing handlers to avoid duplicate logs
+    # Limpiar handlers existentes para evitar logs duplicados
     if logger.handlers:
         logger.handlers.clear()
     
-    # Create formatters
+    # Crear formateadores
     formatter = logging.Formatter(
         '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     )
     
-    # Create console handler
+    # Crear handler de consola
     console_handler = logging.StreamHandler()
     console_handler.setFormatter(formatter)
     console_handler.setLevel(log_level)
     logger.addHandler(console_handler)
     
-    # Create file handler (rotating to keep log file size manageable)
+    # Crear handler de archivo (rotativo para mantener el tamaño del archivo de logs manejable)
     from logging.handlers import RotatingFileHandler
     file_handler = RotatingFileHandler(
         log_dir / 'crypto_app.log',
@@ -61,12 +61,12 @@ def setup_logging(log_level=logging.INFO):
     file_handler.setLevel(log_level)
     logger.addHandler(file_handler)
     
-    # Log initial setup message
+    # Registrar mensaje inicial de configuración
     logging.info("Logging configured successfully")
 
 @click.group()
 def cli():
-    """CoinGecko data fetcher CLI."""
+    """CLI para obtener datos de CoinGecko."""
     pass
 
 @cli.command(name="get-history")
@@ -74,12 +74,12 @@ def cli():
 @click.option('--coin', required=True, help='Coin identifier (e.g., bitcoin)')
 @click.option('--store-db', is_flag=True, help='Store data in PostgreSQL database')
 def get_history(date, coin, store_db):
-    """Fetch coin data for a specific date and store it locally."""
+    """Obtener datos de una moneda para una fecha específica y guardarlos localmente."""
     setup_logging()
     logger.info("Fetching data for %s on %s", coin, date)
     
     try:
-        # Parse and validate date
+        # Analizar y validar la fecha
         parsed_date = parser.parse(date).date()
         formatted_date = parsed_date.strftime('%d-%m-%Y')
         
@@ -140,19 +140,19 @@ def get_history(date, coin, store_db):
 @click.option('--max-workers', default=multiprocessing.cpu_count(), help='Maximum number of worker threads when running concurrently')
 @click.option('--store-db', is_flag=True, help='Store data in PostgreSQL database')
 def bulk_process(start_date, end_date, coin, concurrent, max_workers, store_db):
-    """Fetch coin data for a range of dates."""
+    """Obtener datos de una moneda para un rango de fechas."""
     setup_logging()
     logger.info("Bulk fetching data for %s from %s to %s", coin, start_date, end_date)
     
     try:
-        # Parse and validate dates
+        # Analizar y validar las fechas
         start = parser.parse(start_date).date()
         end = parser.parse(end_date).date()
         
         if start > end:
             raise ValueError("Start date must be before end date")
         
-        # Generate list of dates
+        # Generar lista de fechas
         dates = [dt.date() for dt in rrule(DAILY, dtstart=start, until=end)]
         
         if concurrent:
@@ -170,7 +170,7 @@ def bulk_process(start_date, end_date, coin, concurrent, max_workers, store_db):
         click.echo(f"Error: {str(e)}", err=True)
 
 def _process_single_date(coin, date, store_db=False):
-    """Process a single date for a coin."""
+    """Procesar una sola fecha para una moneda."""
     try:
         formatted_date = date.strftime('%d-%m-%Y')
         logger.info("Processing %s for %s", coin, formatted_date)
@@ -199,10 +199,10 @@ def _process_single_date(coin, date, store_db=False):
             try:
                 db = Database()
                 if db.connect():
-                    # Initialize database if needed
+                    # Inicializar base de datos si es necesario
                     db.initialize_db()
                     
-                    # Save data to database
+                    # Guardar datos en la base de datos
                     if db.save_coin_data(coin, date, data):
                         logger.info("Data saved to PostgreSQL database")
                     else:
@@ -218,25 +218,27 @@ def _process_single_date(coin, date, store_db=False):
         return False
 
 def _bulk_fetch_sequential(coin, dates, store_db=False):
-    """Fetch data for a range of dates sequentially."""
+    """Obtener datos para un rango de fechas secuencialmente."""
     success_count = 0
-    for date in tqdm(dates, desc=f"Fetching {coin} data"):
+    for date in tqdm(dates, desc=f"Obteniendo datos de {coin}"):
         if _process_single_date(coin, date, store_db):
             success_count += 1
     
-    click.echo(f"Successfully processed {success_count} out of {len(dates)} dates for {coin}")
+    click.echo(f"Procesados con éxito {success_count} de {len(dates)} fechas para {coin}")
 
 def _bulk_fetch_concurrent(coin, dates, max_workers, store_db=False):
-    """Fetch data for a range of dates concurrently."""
+    """Obtener datos para un rango de fechas concurrentemente."""
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        # Procesar fechas con ThreadPoolExecutor
         results = list(tqdm(
             executor.map(lambda date: _process_single_date(coin, date, store_db), dates),
             total=len(dates),
-            desc=f"Fetching {coin} data"
+            desc=f"Obteniendo datos de {coin}"
         ))
     
+    # Recopilar resultados
     success_count = results.count(True)
-    click.echo(f"Successfully processed {success_count} out of {len(dates)} dates for {coin}")
+    click.echo(f"Procesados con éxito {success_count} de {len(dates)} fechas para {coin}")
 
 if __name__ == '__main__':
     cli()

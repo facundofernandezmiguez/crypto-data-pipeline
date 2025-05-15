@@ -1,5 +1,5 @@
 """
-Module for handling database operations.
+Módulo para gestionar operaciones de base de datos.
 """
 import os
 import json
@@ -20,11 +20,11 @@ DEFAULT_DB_URL = "postgresql://postgres:postgres@localhost:5432/crypto_data"
 DATABASE_URL = os.environ.get("DATABASE_URL", DEFAULT_DB_URL)
 
 class Database:
-    """Class for handling database operations."""
+    """Clase para gestionar operaciones de base de datos."""
     
     def __init__(self, db_url=None):
         """
-        Initialize the database connection.
+        Inicializa la conexión a la base de datos.
         
         Args:
             db_url (str, optional): URL de conexión a la base de datos.
@@ -33,7 +33,7 @@ class Database:
         self.engine = None
     
     def connect(self):
-        """Establish database connection."""
+        """Establece la conexión a la base de datos."""
         try:
             self.engine = create_engine(self.db_url)
             logger.info("Connected to database: %s", self.db_url.split('@')[1] if '@' in self.db_url else self.db_url)
@@ -43,13 +43,13 @@ class Database:
             return False
     
     def initialize_db(self):
-        """Initialize the database by executing the SQL script."""
+        """Inicializa la base de datos ejecutando el script SQL."""
         if not self.engine:
             if not self.connect():
                 return False
         
         try:
-            # Read and execute the SQL script
+            # Leer y ejecutar el script SQL
             script_path = os.path.join(
                 os.path.dirname(os.path.dirname(__file__)), 
                 'sql', 
@@ -70,22 +70,22 @@ class Database:
     
     def save_coin_data(self, coin_id: str, date_obj: datetime.date, data: Dict[str, Any]) -> bool:
         """
-        Save coin data to the database.
+        Guarda los datos de la moneda en la base de datos.
         
         Args:
-            coin_id (str): Coin ID
-            date_obj (datetime.date): Date of the data
-            data (dict): Coin data from the API
+            coin_id (str): ID de la moneda
+            date_obj (datetime.date): Fecha de los datos
+            data (dict): Datos de la moneda desde la API
             
         Returns:
-            bool: True if saved successfully, False otherwise
+            bool: True si se guardó con éxito, False en caso contrario
         """
         if not self.engine:
             if not self.connect():
                 return False
         
         try:
-            # Extract the price in USD from the data
+            # Extraer el precio en USD de los datos
             price_usd = None
             if data.get('market_data') and data['market_data'].get('current_price'):
                 price_usd = data['market_data']['current_price'].get('usd')
@@ -149,13 +149,13 @@ class Database:
             
     def _update_monthly_aggregates_psycopg2(self, cursor, coin_id: str, year: int, month: int):
         """
-        Update monthly aggregates for a specific coin using psycopg2.
+        Actualiza los agregados mensuales para una moneda específica usando psycopg2.
         
         Args:
-            cursor: Database cursor
-            coin_id (str): Coin ID
-            year (int): Year
-            month (int): Month (1-12)
+            cursor: Cursor de la base de datos
+            coin_id (str): ID de la moneda
+            year (int): Año
+            month (int): Mes (1-12)
         """
         try:
             # Calculate min/max for the month
@@ -198,13 +198,13 @@ class Database:
     
     def _update_monthly_aggregates(self, conn, coin_id: str, year: int, month: int):
         """
-        Update monthly aggregates for a specific coin.
+        Actualiza los agregados mensuales para una moneda específica.
         
         Args:
-            conn: Database connection
-            coin_id (str): Coin ID
-            year (int): Year
-            month (int): Month (1-12)
+            conn: Conexión a la base de datos
+            coin_id (str): ID de la moneda
+            year (int): Año
+            month (int): Mes (1-12)
         """
         try:
             # Calculate min/max for the month
@@ -252,15 +252,15 @@ class Database:
     
     def get_monthly_aggregates(self, coin_id: str, year: int = None, month: int = None) -> List[Dict[str, Any]]:
         """
-        Get monthly aggregates for a coin.
+        Obtiene los agregados mensuales para una moneda.
         
         Args:
-            coin_id (str): Coin ID
-            year (int, optional): Filter by year
-            month (int, optional): Filter by month
+            coin_id (str): ID de la moneda
+            year (int, optional): Filtrar por año
+            month (int, optional): Filtrar por mes
             
         Returns:
-            list: List of monthly aggregates
+            list: Lista de agregados mensuales
         """
         if not self.engine:
             if not self.connect():
