@@ -140,15 +140,6 @@ Aclaración: debido a que esta es la versión free de la api, muchas veces se al
 
 Los archivos json se encuentran en la carpeta /data.
 
-## Variables de Entorno
-
-Crea un archivo `.env` con las siguientes variables:
-
-```
-DATABASE_URL=postgresql://username:password@localhost:5432/crypto
-COINGECKO_API_KEY=tu_api_key_si_está_disponible
-```
-
 ## 2. Loading data into the database
 
 ### 🛠️ Creación de tablas en PostgreSQL
