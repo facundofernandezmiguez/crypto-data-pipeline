@@ -28,9 +28,6 @@ ENV/
 # Environment variables
 .env
 
-# Data files (optional, uncomment if you don't want to track data files)
-/data/
-
 # Jupyter Notebook
 .ipynb_checkpoints
 
