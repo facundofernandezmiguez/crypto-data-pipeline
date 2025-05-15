@@ -204,13 +204,11 @@ Para inicializar la base de datos con las tablas necesarias (coin_history y coin
    \dt
    ```
    Deberías ver:
-   ```
-              List of relations
-  Schema |          Name           | Type  |  Owner
- --------+-------------------------+-------+----------
-  public | coin_history            | table | postgres
-  public | coin_monthly_aggregates | table | postgres
-   ```
+
+| Schema | Name | Type | Owner |
+|--------|------|------|-------|
+| public | coin_history | table | postgres |
+| public | coin_monthly_aggregates | table | postgres |
 
 ### E3. Analysing coin data with SQL 👓
 
