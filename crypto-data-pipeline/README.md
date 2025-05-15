@@ -86,13 +86,13 @@ Esto iniciará tanto la aplicación Python como la base de datos PostgreSQL.
    psql -U postgres -f sql/create_tables.sql
    ```
 
-## Uso
+## 1. Getting crypto token data 💸
 
 ### Interfaz de Línea de Comandos
 
 La CLI proporciona varios comandos para la obtención y procesamiento de datos:
 
-#### 1. Getting crypto token data 💸
+#### Obtener una fecha específica.
 
 ```
 python -m crypto_app.cli get-history --coin bitcoin --date 2025-01-01
@@ -104,7 +104,7 @@ Si también quieres almacenar los datos en la base de datos:
 python -m crypto_app.cli get-history --coin bitcoin --date 2025-01-01 --store-db
 ```
 
-#### 2. Procesamiento diario automatizado
+#### Procesamiento diario automatizado
 
 Para ejecutar la obtención diaria de datos para bitcoin, ethereum y cardano:
 
@@ -118,7 +118,7 @@ Para ver las instrucciones de configuración de tareas programadas:
 python -m crypto_app.daily_fetch --setup
 ```
 
-#### 3. Procesamiento en lote para un rango de fechas
+#### Procesamiento en lote para un rango de fechas
 
 Para procesar un rango de fechas de forma secuencial:
 
