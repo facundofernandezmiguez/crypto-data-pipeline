@@ -241,3 +241,5 @@ Consultá el archivo `sql/analysis_queries.sql` para ver la documentación detal
 
 Ejecutá las notebooks de análisis exploratorio de datos y de predicción de precios. Se encuentran en la carpeta notebooks.
 
+Recordá que debés iniciar Docker y ejecutar `docker-compose up -d` para iniciar los servicios.
+

@@ -6,11 +6,14 @@ services:
     volumes:
       - ./data:/app/data
       - ./logs:/app/logs
+      - ./notebooks:/app/notebooks
+    ports:
+      - "8888:8888"
     depends_on:
       - db
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/crypto
-    command: ["--help"]  # Default to showing help, override with your command
+    command: ["--help"]  
 
   db:
     image: postgres:14-alpine
