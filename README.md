@@ -30,7 +30,8 @@ crypto-data-pipeline/
 │   └── regression.py            # Entrenamiento/evaluación de modelos
 │
 ├── notebooks/                   # Notebooks Jupyter - ejercicio 4
-│   └── crypto_EDA.ipynb
+│   └── crypto_EDA.ipynb         # 4.1 y 4.2
+│   └── predictions.ipynb        # 4.3 y 4.4
 │
 ├── data/                        # Directorio de salida (JSONs, imágenes, CSVs)
 │
