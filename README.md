@@ -14,7 +14,7 @@ Este proyecto proporciona un flujo de trabajo completo para:
 
 ```
 crypto-data-pipeline/
-├── crypto_app/                  # Módulos CLI y conexión a API/DB
+├── crypto_app/                  # Ej 1
 │   ├── __init__.py
 │   ├── cli.py                   # Punto de entrada con comandos: get-history, bulk-process, --store-db
 │   ├── coingecko_client.py      # Lógica HTTP / análisis de JSON
@@ -22,8 +22,8 @@ crypto-data-pipeline/
 │   └── daily_fetch.py           # Script para ejecución diaria programada
 │
 ├── sql/                         # Consultas SQL
-│   ├── create_tables.sql        # Creación de tablas 
-│   └── analysis_queries.sql     # Queries ejercicio 3
+│   ├── create_tables.sql        # Creación de tablas  (Ej 2)
+│   └── analysis_queries.sql     # Queries (Ej 3
 │
 ├── analysis/                    # Scripts de análisis en Python
 │   ├── feature_engineering.py   # Generación de características + exportación de CSV/gráficos
