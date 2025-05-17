@@ -23,7 +23,7 @@ crypto-data-pipeline/
 │
 ├── sql/                         # Consultas SQL
 │   ├── create_tables.sql        # Creación de tablas  (Ej 2)
-│   └── analysis_queries.sql     # Queries (Ej 3
+│   └── analysis_queries.sql     # Queries (Ej 3)
 │
 ├── analysis/                    # Scripts de análisis en Python
 │   ├── feature_engineering.py   # Generación de características + exportación de CSV/gráficos
@@ -34,7 +34,7 @@ crypto-data-pipeline/
 │   └── transform_data.ipynb     # 4.3
 │   └── models.ipynb             # 4.4
 │
-├── data/                        # Directorio de salida (JSONs, imágenes, CSVs)
+├── data/                        # Directorio de salida (JSONs, gráficos, CSVs)
 │
 ├── logs/                        # Archivos de registro de la aplicación
 │
