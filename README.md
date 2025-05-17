@@ -199,20 +199,32 @@ Para responder a las preguntas de la Sección 3, sigue estos pasos:
    
    - **Query 1**: Calcula el precio promedio por mes para cada moneda
 
-   Deberías ver este resultado: 
+   Deberías ver un resultado similar a este: 
    
    | coin_id  | year | month | avg_price_usd |
    |----------|------|-------|---------------|
+   | bitcoin  | 2024 | 9     | 60210.03      |
+   | bitcoin  | 2024 | 10    | 65430.60      |
+   | bitcoin  | 2024 | 11    | 88277.57      |
+   | bitcoin  | 2024 | 12    | 98262.05      |
    | bitcoin  | 2025 | 1     | 99696.06      |
    | bitcoin  | 2025 | 2     | 95922.85      |
-   | bitcoin  | 2025 | 3     | 83974.37      |
+   | bitcoin  | 2025 | 3     | 85590.72      |
    | bitcoin  | 2025 | 4     | 86068.13      |
-   | bitcoin  | 2025 | 5     | 99448.47      |
+   | bitcoin  | 2025 | 5     | 99940.71      |
+   | cardano  | 2024 | 9     | 0.35          |
+   | cardano  | 2024 | 10    | 0.35          |
+   | cardano  | 2024 | 11    | 0.67          |
+   | cardano  | 2024 | 12    | 1.03          |
    | cardano  | 2025 | 1     | 0.99          |
    | cardano  | 2025 | 2     | 0.76          |
    | cardano  | 2025 | 3     | 0.74          |
    | cardano  | 2025 | 4     | 0.65          |
    | cardano  | 2025 | 5     | 0.74          |
+   | ethereum | 2024 | 9     | 2464.41       |
+   | ethereum | 2024 | 10    | 2520.05       |
+   | ethereum | 2024 | 11    | 3077.43       |
+   | ethereum | 2024 | 12    | 3655.90       |
    | ethereum | 2025 | 1     | 3329.32       |
    | ethereum | 2025 | 2     | 2715.39       |
    | ethereum | 2025 | 3     | 2043.64       |
@@ -225,9 +237,9 @@ Para responder a las preguntas de la Sección 3, sigue estos pasos:
    
    | coin_id  | avg_price_increase_pct | current_market_cap_usd |
    |----------|------------------------|-----------------------|
-   | ethereum | 16.44                  | 314.02B                |
-   | cardano  | 9.86                   | 28.79B                 |
-   | bitcoin  | 7.49                   | 2.06T                  |
+   | ethereum | 26.97                  | 314.02B                |
+   | cardano  | 109.95                 | 28.79B                 |
+   | bitcoin  | 35.30                  | 2.06T                  |
 
    Podés copiar y pegar estas consultas desde el archivo, o ejecutar el archivo completo con:
 
