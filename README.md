@@ -261,7 +261,7 @@ Las respuestas a las consignas 4.1 y 4.2 se encuentran en la notebook `EDA.ipynb
 4.3 se encuentra en la notebook `transform_data.ipynb` y 4.4 se encuentra en la notebook `models.ipynb`.
 
 Se compararon 4 modelos de regresión:
-- Regresión Lineal
+- Regresión Lineal Multiple
 - Ridge
 - Lasso
 - XGBoostRegressor.
