@@ -47,7 +47,7 @@ crypto-data-pipeline/
 
 ## Instalación usando Docker 
 
-1. Asegúrate de tener Docker y Docker Compose instalados en tu sistema.
+1. Asegurate de tener Docker y Docker Compose instalados en tu sistema.
 
 2. Clona el repositorio:
    ```
