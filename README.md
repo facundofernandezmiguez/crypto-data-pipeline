@@ -266,7 +266,7 @@ Se compararon 4 modelos de regresión:
 - Lasso
 - XGBoostRegressor.
 
-De los modelos evaluados, la regresión Ridge mostró el mejor desempeño general para predecir el precio del día siguiente en la mayoría de las criptomonedas, combinando buena precisión con estabilidad. Si bien XGBoost suele destacarse en tareas complejas, en este caso no superó a los modelos lineales, probablemente debido al tamaño y la naturaleza temporal del dataset.
+De los modelos evaluados, la regresión **Ridge** mostró el mejor desempeño general para predecir el precio del día siguiente en la mayoría de las criptomonedas, combinando buena precisión con estabilidad. Si bien XGBoost suele destacarse en tareas complejas, en este caso no superó a los modelos lineales, probablemente debido al tamaño y la naturaleza temporal del dataset.
 
 
 
