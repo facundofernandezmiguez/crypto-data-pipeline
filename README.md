@@ -265,6 +265,7 @@ Se compararon 4 modelos de regresión:
 - Ridge
 - Lasso
 - XGBoostRegressor.
+
 El modelo ganador fue Ridge.
 
 
