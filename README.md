@@ -257,9 +257,8 @@ Ejecutá las notebooks de análisis exploratorio de datos y de predicción de pr
 
 Recordá que debés iniciar Docker y ejecutar `docker-compose up -d` para iniciar los servicios y cargar la base de PostgreSQL.
 
-Las respuestas a las consignas 4.1 y 4.2 se encuentran en la notebook `EDA.ipynb`.
-4.3 se encuentra en la notebook `transform_data.ipynb`.
-4.4 se encuentra en la notebook `models.ipynb`.
+Las respuestas a las consignas 4.1 y 4.2 se encuentran en la notebook `EDA.ipynb`;
+4.3 se encuentra en la notebook `transform_data.ipynb` y 4.4 se encuentra en la notebook `models.ipynb`.
 
 Los outputs se encuentran en la carpeta /data.
 
