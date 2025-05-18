@@ -258,7 +258,7 @@ Ejecutá las notebooks de análisis exploratorio de datos y de predicción de pr
 Recordá que debés iniciar Docker y ejecutar `docker-compose up -d` para iniciar los servicios y cargar la base de PostgreSQL.
 
 Las respuestas a las consignas 4.1 y 4.2 se encuentran en la notebook `EDA.ipynb`;
-4.3 se encuentra en la notebook `transform_data.ipynb` y 4.4 se encuentra en la notebook `models.ipynb`.
+4.3 se encuentra en la notebook `transform_data.ipynb` y 4.4 se encuentra en la notebook `models.ipynb`. Los outputs se encuentran en la carpeta `data`.
 
 Se compararon 4 modelos de regresión:
 - Regresión Lineal Multiple
@@ -266,8 +266,7 @@ Se compararon 4 modelos de regresión:
 - Lasso
 - XGBoostRegressor.
 
-El modelo ganador fue Ridge.
+De los modelos evaluados, Ridge Regression mostró el mejor desempeño general para predecir el precio del día siguiente en la mayoría de las criptomonedas, combinando buena precisión con estabilidad. Si bien XGBoost suele destacarse en tareas complejas, en este caso no superó a los modelos lineales, probablemente debido al tamaño y la naturaleza temporal del dataset.
 
 
-Los outputs se encuentran en la carpeta `data`.
 
