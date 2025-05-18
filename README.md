@@ -138,7 +138,7 @@ docker-compose run app bulk-process --coin ethereum --start-date 2025-01-01 --en
 
 docker-compose run app bulk-process --coin cardano --start-date 2025-01-01 --end-date 2025-05-13 --store-db
 ```
-Aclaración: debido a que esta es la versión free de la api, muchas veces se alcanza el rate limit. Tuve que reejecutar varias veces algunas fechas especificas para obtener todos los datos.
+Aclaración: debido a que esta es la versión free de la api de CoinGecko, muchas veces se alcanza el rate limit y algunas fechas no se cargan correctamente. Hay que reejecutar varias veces algunas fechas especificas para obtener todos los datos.
 
 Los archivos json se encuentran en la carpeta /data.
 
@@ -200,7 +200,7 @@ Para responder a las preguntas de la Sección 3, sigue estos pasos:
    
    - **Query 1**: Calcula el precio promedio por mes para cada moneda
 
-   Deberías ver un resultado similar a este: 
+   Deberías ver un resultado similar a este (dependiendo de qué meses y monedas hayas guardado): 
    
    | coin_id  | year | month | avg_price_usd |
    |----------|------|-------|---------------|
@@ -255,5 +255,11 @@ Consultá el archivo `sql/analysis_queries.sql` para ver la documentación detal
 
 Ejecutá las notebooks de análisis exploratorio de datos y de predicción de precios. Se encuentran en la carpeta notebooks.
 
-Recordá que debés iniciar Docker y ejecutar `docker-compose up -d` para iniciar los servicios.
+Recordá que debés iniciar Docker y ejecutar `docker-compose up -d` para iniciar los servicios y cargar la base de PostgreSQL.
+
+4.1 y 4.2 se encuentran en la notebook EDA.ipynb.
+4.3 se encuentra en la notebook transform_data.ipynb.
+4.4 se encuentra en la notebook models.ipynb.
+
+Los outputs se encuentran en la carpeta /data.
 
